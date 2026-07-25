@@ -16,8 +16,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-    st.title("⚡ TNEB AI Theft Detection System")
-    st.subheader("Smart Grid Monitoring for Tamil Nadu")
+st.title("⚡ TNEB AI Theft Detection System")
+st.subheader("Smart Grid Monitoring for Tamil Nadu")
     
 st.markdown("---")
 
