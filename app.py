@@ -9,9 +9,13 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-st.set_page_config(page_title="⚡ AI Theft Detector", layout="wide")
+st.set_page_config(page_title="Chennai Smart Grid", page_icon="⚡", layout="wide")
+
 st.title("⚡ AI-Powered Electricity Theft Detection")
-st.markdown("**Chennai Smart Grid - Powered by Gemini AI**")
+st.subheader("Protecting TNEB revenue & reducing blackouts in Chennai")
+st.markdown("---")
+
+st.info("This AI analyzes smart meter data to detect abnormal usage patterns and flag potential electricity theft.")
 
 df = pd.read_csv("data.csv")
 
