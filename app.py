@@ -70,26 +70,26 @@ def analyze_consumer(row):
             return pd.Series(["NORMAL", 10, "Usage is stable"])
 
 
-if st.button("🚀 Run AI Scan", type="primary"):
+if st.button("⚡ Run AI Scan", type="primary"):
     with st.spinner("Gemini AI is analyzing meters..."):
         df[['verdict','risk_score','reason']] = df.apply(analyze_consumer, axis=1)
     theft_df = df[df['verdict'] == 'THEFT']
 
-# LIVE ALERT + TNEB CONTACT SYSTEM
-if len(theft_df) > 0:
-    st.error(f"🚨 ALERT: {len(theft_df)} Potential Theft Cases Detected! Immediate Action Required.")
-    
-    with st.expander("Click to see high risk cases + TNEB Contact"):
-        for i in range(min(5, len(theft_df))):
-            row = theft_df.iloc[i]
-            area = row['area']
-            contact = tneb_contacts.get(area, {"office": "TNEB Helpline", "phone": "1912", "email": "support@tneb.in"})
-            
-            st.warning(f"⚡ **Case {i+1}**: {row['consumer_id']} | Area: {area} | Risk: {row['risk_score']}%")
-            st.info(f"📞 **Contact TNEB {area}**\n\n**Office:** {contact['office']}\n**Phone:** {contact['phone']}\n**Email:** {contact['email']}")
-            st.markdown("---")
-else:
-    st.success("✅ No theft detected. Grid is safe.")
+    # LIVE ALERT + TNEB CONTACT SYSTEM - MOVED INSIDE
+    if len(theft_df) > 0:
+        st.error(f"🚨 ALERT: {len(theft_df)} Potential Theft Cases Detected! Immediate Action Required.")
+        
+        with st.expander("Click to see high risk cases + TNEB Contact"):
+            for i in range(min(5, len(theft_df))):
+                row = theft_df.iloc[i]
+                area = row['area']
+                contact = tneb_contacts.get(area, {"office": "TNEB Helpline", "phone": "1912", "email": "support@tneb.in"})
+                
+                st.warning(f"⚡ **Case {i+1}**: {row['consumer_id']} | Area: {area} | Risk: {row['risk_score']}%")
+                st.info(f"📞 **Contact TNEB {area}**\n\n**Office:** {contact['office']}\n**Phone:** {contact['phone']}\n**Email:** {contact['email']}")
+                st.markdown("---")
+    else:
+        st.success("✅ No theft detected. Grid is safe.")
 
     st.subheader("📍 Risk by Area")
     area_risk = df.groupby('area')['risk_score'].mean().reset_index()
