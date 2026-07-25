@@ -9,11 +9,41 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-st.set_page_config(page_title="Chennai Smart Grid", page_icon="⚡", layout="wide")
+# Set page config with dark theme
+st.set_page_config(
+    page_title="TNEB Smart Grid AI", 
+    page_icon="⚡", 
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-st.title("⚡ AI-Powered Electricity Theft Detection")
-st.subheader("Protecting TNEB revenue & reducing blackouts in Chennai")
+# Custom CSS for Dark Mode + Pro look
+st.markdown("""
+<style>
+   .stApp {
+        background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: #00d4ff!important;
+    }
+   .stMetric {
+        background-color: rgba(255,255,255,0.1);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #00d4ff;
+    }
+</style>
+""", unsafe_allow_html=True)
+# ADD LOGO + NEW TITLE
+col1, col2 = st.columns([1, 5])
+with col1:
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/TNEB_Logo.png/200px-TNEB_Logo.png", width=80)
+with col2:
+    st.title("⚡ TNEB AI Theft Detection System")
+    st.subheader("Smart Grid Monitoring for Tamil Nadu")
+    
 st.markdown("---")
+
 
 st.info("This AI analyzes smart meter data to detect abnormal usage patterns and flag potential electricity theft.")
 
