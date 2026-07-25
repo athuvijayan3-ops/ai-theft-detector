@@ -79,6 +79,26 @@ chart_data = pd.DataFrame({
     'Risk Score': [85, 45, 72, 30]
 })
 st.bar_chart(chart_data.set_index('Area'))
+st.markdown("### 🗺️ Theft Hotspot Map")
+
+# Add fake lat/lon for demo areas in Chennai
+map_data = pd.DataFrame({
+    'lat': [13.0827, 13.0067, 12.9698, 13.0711],  # Chennai, Adyar, Velachery, Nungambakkam
+    'lon': [80.2707, 80.2572, 80.2442, 80.2356],
+    'Area': ['T.Nagar', 'Adyar', 'Velachery', 'Nungambakkam'],
+    'Risk': [85, 45, 72, 30]
+})
+
+# Only show high risk areas on map
+high_risk_map = map_data[map_data['Risk'] > 50]
+
+if len(high_risk_map) > 0:
+    st.warning(f"Showing {len(high_risk_map)} High-Risk Zones in Chennai")
+    st.map(high_risk_map[['lat', 'lon']], zoom=11)
+else:
+    st.success("No high-risk zones detected")
+
+st.caption("Red dots = Areas with Risk Score > 50")
 st.markdown("### 🔍 District Search")
 
 # List of all TN districts
