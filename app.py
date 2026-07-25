@@ -103,9 +103,8 @@ else:
             st.markdown(f"**{row['consumer_id']} - {row['area']}** | Risk: {row['risk_score']}/100")
             st.write(f"Usage: {row['prev_month_units']} → {row['units_consumed']} units")
             st.info(f"AI Reason: {row['reason']}")
-            # Add this AFTER the for loop ends
-else:
-    st.info("Click 'Run AI Scan' to start")
+    else:
+      st.info("No flagged cases to show yet. Click 'Run AI Scan' to analyze.")
     st.markdown("### 📊 Impact Dashboard")
 col1, col2, col3 = st.columns(3)
 col1.metric("Theft Cases Detected", "12", "+8%")
