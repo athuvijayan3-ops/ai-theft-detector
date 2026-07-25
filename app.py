@@ -65,7 +65,8 @@ if 'verdict' in df.columns:
             st.write(f"Usage: {row['prev_month_units']} → {row['units_consumed']} units")
             st.info(f"AI Reason: {row['reason']}")
             # Add this AFTER the for loop ends
-st.markdown("### 📊 Impact Dashboard")
+else:
+    st.info("Click 'Run AI Scan' to start")st.markdown("### 📊 Impact Dashboard")
 col1, col2, col3 = st.columns(3)
 col1.metric("Theft Cases Detected", "12", "+8%")
 col2.metric("Estimated Loss Prevented", "₹4.2 Lakhs", "+15%")
@@ -77,5 +78,4 @@ chart_data = pd.DataFrame({
     'Risk Score': [85, 45, 72, 30]
 })
 st.bar_chart(chart_data.set_index('Area'))
-else:
-    st.info("Click 'Run AI Scan' to start")
+    
