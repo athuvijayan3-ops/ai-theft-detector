@@ -74,7 +74,6 @@ if st.button("🚀 Run AI Scan", type="primary"):
     with st.spinner("Gemini AI is analyzing meters..."):
         df[['verdict','risk_score','reason']] = df.apply(analyze_consumer, axis=1)
     theft_df = df[df['verdict'] == 'THEFT']
-    theft_df = df[df['status'] == 'THEFT']
 
 # LIVE ALERT + TNEB CONTACT SYSTEM
 if len(theft_df) > 0:
