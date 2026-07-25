@@ -34,11 +34,7 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-# ADD LOGO + NEW TITLE
-col1, col2 = st.columns([1, 5])
-with col1:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/TNEB_Logo.png/200px-TNEB_Logo.png", width=80)
-with col2:
+
     st.title("⚡ TNEB AI Theft Detection System")
     st.subheader("Smart Grid Monitoring for Tamil Nadu")
     
