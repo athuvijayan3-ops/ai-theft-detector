@@ -97,6 +97,7 @@ else:
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("🚨 Flagged Cases")
+    if len(theft_df)>0:
     for _, row in theft_df.iterrows():
         with st.container(border=True):
             st.markdown(f"**{row['consumer_id']} - {row['area']}** | Risk: {row['risk_score']}/100")
