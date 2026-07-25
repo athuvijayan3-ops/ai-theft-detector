@@ -79,4 +79,28 @@ chart_data = pd.DataFrame({
     'Risk Score': [85, 45, 72, 30]
 })
 st.bar_chart(chart_data.set_index('Area'))
+st.markdown("### 🔍 District Search")
+
+# List of all TN districts
+tn_districts = [
+    'Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem', 'Tirunelveli', 
+    'Erode', 'Vellore', 'Thoothukudi', 'Dindigul', 'Thanjavur', 'Ranipet', 
+    'Sivaganga', 'Virudhunagar', 'Kanniyakumari', 'Tiruppur', 'Kancheepuram',
+    'Tiruvallur', 'Cuddalore', 'Nagapattinam', 'Karur', 'Namakkal', 'Krishnagiri'
+]
+
+selected_district = st.selectbox("Select District to Check", tn_districts)
+
+if st.button(f"Check {selected_district}"):
+    # Fake data for demo - replace with real logic later
+    high_risk_districts = ['Chennai', 'Madurai', 'Coimbatore', 'Tirunelveli']
+    
+    if selected_district in high_risk_districts:
+        st.error(f"⚠️ THEFT DETECTED in {selected_district}")
+        st.warning("12 suspicious meters found. Estimated loss: ₹2.3 Lakhs")
+    else:
+        st.success(f"✅ {selected_district} is SAFE")
+        st.info("No abnormal usage patterns detected this month")
+
+st.markdown("---")
     
