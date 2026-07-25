@@ -16,25 +16,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-# Custom CSS for Dark Mode + Pro look
-st.markdown("""
-<style>
-   .stApp {
-        background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-    }
-    h1, h2, h3, h4, h5, h6 {
-        color: #00d4ff!important;
-    }
-   .stMetric {
-        background-color: rgba(255,255,255,0.1);
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid #00d4ff;
-    }
-</style>
-""", unsafe_allow_html=True)
-
     st.title("⚡ TNEB AI Theft Detection System")
     st.subheader("Smart Grid Monitoring for Tamil Nadu")
     
