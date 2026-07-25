@@ -51,10 +51,6 @@ if st.button("🚀 Run AI Scan", type="primary"):
     with st.spinner("Gemini AI is analyzing meters..."):
         df[['verdict','risk_score','reason']] = df.apply(analyze_consumer, axis=1)
     theft_df = df[df['verdict'] == 'THEFT']
-if len(theft_df) > 0:
-    st.error(f"🚨 ALERT: {len(theft_df)} Potential Theft Cases Detected! Immediate Action Required.")
-else:
-    st.success("✅ No theft detected. Grid is safe.")
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Consumers", len(df))
     col2.metric("🚨 Theft Detected", len(theft_df))
