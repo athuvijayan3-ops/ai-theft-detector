@@ -8,6 +8,29 @@ from dotenv import load_dotenv
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-flash')
+# TNEB District Contact Database
+tneb_contacts = {
+    "Chennai": {"office": "TNEB Chennai Central", "phone": "044-28521345", "email": "chennai@tneb.in"},
+    "Coimbatore": {"office": "TNEB Coimbatore North", "phone": "0422-2221444", "email": "cbe@tneb.in"},
+    "Madurai": {"office": "TNEB Madurai South", "phone": "0452-2533333", "email": "mdu@tneb.in"},
+    "Trichy": {"office": "TNEB Trichy Division", "phone": "0431-2700300", "email": "trichy@tneb.in"},
+    "Salem": {"office": "TNEB Salem Circle", "phone": "0427-2450200", "email": "salem@tneb.in"},
+    "Tirunelveli": {"office": "TNEB Tirunelveli", "phone": "0462-2575000", "email": "tvl@tneb.in"},
+    "Erode": {"office": "TNEB Erode", "phone": "0424-2261000", "email": "erode@tneb.in"},
+    "Vellore": {"office": "TNEB Vellore", "phone": "0416-2222444", "email": "vellore@tneb.in"},
+    "Thoothukudi": {"office": "TNEB Thoothukudi", "phone": "0461-2323333", "email": "tdy@tneb.in"},
+    "Dindigul": {"office": "TNEB Dindigul", "phone": "0451-2431000", "email": "dgl@tneb.in"},
+    "Thanjavur": {"office": "TNEB Thanjavur", "phone": "04362-230000", "email": "tjore@tneb.in"},
+    "Ranipet": {"office": "TNEB Ranipet", "phone": "04172-244444", "email": "ranipet@tneb.in"},
+    "Sivaganga": {"office": "TNEB Sivaganga", "phone": "04575-240000", "email": "sivaganga@tneb.in"},
+    "Kanniyakumari": {"office": "TNEB Nagercoil", "phone": "04652-222", "email": "nagercoil@tneb.in"},
+    "Tiruppur": {"office": "TNEB Tiruppur", "phone": "0421-2200000", "email": "tirupur@tneb.in"},
+    "Pudukkottai": {"office": "TNEB Pudukkottai", "phone": "04322-222222", "email": "pdk@tneb.in"},
+    "Nagapattinam": {"office": "TNEB Nagapattinam", "phone": "04365-242222", "email": "ngp@tneb.in"},
+    "Namakkal": {"office": "TNEB Namakkal", "phone": "04286-280000", "email": "namakkal@tneb.in"},
+    "Dharmapuri": {"office": "TNEB Dharmapuri", "phone": "04342-230000", "email": "dharmapuri@tneb.in"},
+    "Cuddalore": {"office": "TNEB Cuddalore", "phone": "04142-230000", "email": "cuddalore@tneb.in"}
+}
 
 # Set page config with dark theme
 st.set_page_config(
