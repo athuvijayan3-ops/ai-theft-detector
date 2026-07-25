@@ -97,14 +97,15 @@ else:
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("🚨 Flagged Cases")
-    if len(theft_df)>0:
+if len(theft_df) > 0:
     for _, row in theft_df.iterrows():
         with st.container(border=True):
             st.markdown(f"**{row['consumer_id']} - {row['area']}** | Risk: {row['risk_score']}/100")
             st.write(f"Usage: {row['prev_month_units']} → {row['units_consumed']} units")
             st.info(f"AI Reason: {row['reason']}")
-    else:
-      st.info("No flagged cases to show yet. Click 'Run AI Scan' to analyze.")
+else:
+    st.info("No flagged cases to show yet. Click 'Run AI Scan' to analyze.")
+
     st.markdown("### 📊 Impact Dashboard")
 col1, col2, col3 = st.columns(3)
 col1.metric("Theft Cases Detected", "12", "+8%")
