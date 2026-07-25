@@ -1,0 +1,9 @@
+consumer_id,area,month,units_consumed,bill_amount,meter_age_years,prev_month_units
+C101,T Nagar,2026-06,220,1450,2,210
+C102,T Nagar,2026-06,45,320,5,200
+C103,Adyar,2026-06,310,1980,1,300
+C104,Velachery,2026-06,15,120,8,180
+C105,Nungambakkam,2026-06,400,2500,3,390
+C106,Adyar,2026-06,30,250,6,290
+C107,Velachery,2026-06,350,2200,2,340
+C108,Nungambakkam,2026-06,25,200,7,260
