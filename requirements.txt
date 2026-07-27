@@ -2,5 +2,5 @@
 pandas
 google-generativeai
 python-dotenv
-ploty
+plotly
 reportlab
