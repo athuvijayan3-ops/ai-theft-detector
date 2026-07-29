@@ -4,3 +4,6 @@ google-generativeai
 python-dotenv
 plotly
 reportlab
+gTTS
+openpyxl
+sqlite3
