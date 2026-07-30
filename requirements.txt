@@ -1,4 +1,4 @@
-﻿streamlit
+streamlit
 pandas
 google-generativeai
 python-dotenv
@@ -6,4 +6,6 @@ plotly
 reportlab
 gTTS
 openpyxl
-sqlite3
+numpy
+pillow
+opencv-python-headless
