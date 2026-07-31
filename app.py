@@ -30,11 +30,25 @@ c.execute('''CREATE TABLE IF NOT EXISTS scans
 c.execute('''CREATE TABLE IF NOT EXISTS officers
              (officer_id TEXT PRIMARY KEY, password TEXT)''')
 
-# FORCE RESET OFFICER CREDENTIALS EVERY RUN
-c.execute("DELETE FROM officers WHERE officer_id='TNEB001'")
-c.execute("INSERT INTO officers VALUES('TNEB001', 'tneb@123')")
-conn.commit()
+# --- LOGIN GATE ---
+st.set_page_config(page_title="TNEB Secure Login", layout="centered")
 
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+
+if not st.session_state.logged_in:
+    st.title("🔒 TNEB Smart Grid - Officer Login")
+    password = st.text_input("Enter Access Password", type="password")
+    if st.button("Login"):
+        if password == "TNEB2026": # change this password
+            st.session_state.logged_in = True
+            st.rerun()
+        else:
+            st.error("Wrong Password")
+    st.stop() # stops app if not logged in
+
+st.success("✅ Access Granted")
+# --- END LOGIN GATE ---
 tneb_contacts = {
     "Chennai": {"office": "TNEB Chennai Central", "phone": "044-28521345", "email": "chennai@tneb.in"},
     "Coimbatore": {"office": "TNEB Coimbatore North", "phone": "0422-2221444", "email": "cbe@tneb.in"},
