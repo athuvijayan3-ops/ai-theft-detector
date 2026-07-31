@@ -21,15 +21,6 @@ if not API_KEY:
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-# --- SQLITE - AUTO RESET OFFICER ---
-conn = sqlite3.connect('tneb_theft.db', check_same_thread=False)
-c = conn.cursor()
-c.execute('''CREATE TABLE IF NOT EXISTS scans
-             (id INTEGER PRIMARY KEY, consumer_id TEXT, area TEXT, verdict TEXT,
-              risk_score INTEGER, reason TEXT, theft_date TEXT, theft_time TEXT, scan_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
-c.execute('''CREATE TABLE IF NOT EXISTS officers
-             (officer_id TEXT PRIMARY KEY, password TEXT)''')
-
 # --- LOGIN GATE ---
 st.set_page_config(page_title="TNEB Secure Login", layout="centered")
 
