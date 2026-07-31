@@ -13,6 +13,7 @@ import time
 import random  
 
 load_dotenv()
+
 # --- CONFIGURE GEMINI ---
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
@@ -21,25 +22,20 @@ if not API_KEY:
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 
-# --- LOGIN GATE ---
-st.set_page_config(page_title="TNEB Secure Login", layout="centered")
+# --- SQLITE - AUTO RESET OFFICER ---
+conn = sqlite3.connect('tneb_theft.db', check_same_thread=False)
+c = conn.cursor()
+c.execute('''CREATE TABLE IF NOT EXISTS scans
+             (id INTEGER PRIMARY KEY, consumer_id TEXT, area TEXT, verdict TEXT,
+              risk_score INTEGER, reason TEXT, theft_date TEXT, theft_time TEXT, scan_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)''')
+c.execute('''CREATE TABLE IF NOT EXISTS officers
+             (officer_id TEXT PRIMARY KEY, password TEXT)''')
 
-if 'logged_in' not in st.session_state:
-    st.session_state.logged_in = False
+# FORCE RESET OFFICER CREDENTIALS EVERY RUN
+c.execute("DELETE FROM officers WHERE officer_id='TNEB001'")
+c.execute("INSERT INTO officers VALUES('TNEB001', 'tneb@123')")
+conn.commit()
 
-if not st.session_state.logged_in:
-    st.title("🔒 TNEB Smart Grid - Officer Login")
-    password = st.text_input("Enter Access Password", type="password")
-    if st.button("Login"):
-        if password == "TNEB2026": # change this password
-            st.session_state.logged_in = True
-            st.rerun()
-        else:
-            st.error("Wrong Password")
-    st.stop() # stops app if not logged in
-
-st.success("✅ Access Granted")
-# --- END LOGIN GATE ---
 tneb_contacts = {
     "Chennai": {"office": "TNEB Chennai Central", "phone": "044-28521345", "email": "chennai@tneb.in"},
     "Coimbatore": {"office": "TNEB Coimbatore North", "phone": "0422-2221444", "email": "cbe@tneb.in"},
