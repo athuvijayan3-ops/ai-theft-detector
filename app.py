@@ -13,7 +13,6 @@ import time
 import random  
 
 load_dotenv()
-
 # --- CONFIGURE GEMINI ---
 API_KEY = os.getenv("GEMINI_API_KEY")
 if not API_KEY:
